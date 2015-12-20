@@ -1,0 +1,27 @@
+Options FollowSymLinks
+RewriteEngine On
+RewriteBase /
+
+
+RewriteRule ^landingpage/(.{0,})$ landingpage/$1 [L]
+RewriteRule ^logout/$ logout.php
+RewriteRule ^kurwa$ index.php
+RewriteRule ^$ index.html
+RewriteRule ^img/([a-zA-Z0-9]*)$ img/$1
+RewriteRule ^([0-9]*)$ images/$1
+RewriteRule ^login/$ Controller.php?main=login
+RewriteRule ^register/$ Controller.php?main=register
+
+RewriteRule ^console$ Controller.php?main=console
+RewriteRule ^console/([a-z]*)$ Controller.php?main=console&sub=$1
+RewriteRule ^console/([a-z]*)/([0-9]*)$ Controller.php?main=console&sub=$1&id=$2
+
+RewriteRule ([a-z]*).js$ js/$1.js
+RewriteRule ([a-z]*).css$ css/$1.css
+
+RewriteRule ^([a-z]*)/$ Display.php?what=$1
+
+
+
+ 
+ 

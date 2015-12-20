@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript">
+
+            
+
+            /**
+             * 
+             * @param  
+             * @returns {undefined}
+             */
+            function add($element) {
+                var $temp = $element.parentNode.parentNode.parentNode.children[1];
+                var $append = $element.parentNode.parentNode.parentNode.cloneNode(true);
+                $append.children[1].innerHTML = "";
+                $temp.appendChild($append);
+
+            }
+
+            function del($element) {
+                if ($element.parentNode.parentNode.parentNode.children[1].innerHTML === "") {
+                    $element.parentNode.parentNode.parentNode.parentNode.removeChild($element.parentNode.parentNode.parentNode);
+                }
+            }
+
+            function list() {
+                var $temp = nodes(document.getElementById("menu"), new Object())
+                $temp = JSON.stringify($temp);
+
+                $form = new XMLHttpRequest();
+
+            }
+
+            function nodes($element, $tree) {
+                $root = $element.children[0];
+                $tree.price = $root.children[0].children[0].value;
+                $tree.title = $root.children[1].value;
+                $tree.subtitle = $root.children[2].value;
+                var $others = $element.children[1].children;
+                $tree.children = new Array();
+
+                for (var $i = 0; $i < $others.length; $i++) {
+                    $tree.children[$i] = nodes($others[$i], new Object());
+                }
+
+                return $tree;
+
+            }
+
+        </script>
+        <style>
+            .noborder { border:none;}
+        </style>
+    </head>
+    <body>
+        <div style="float:left;" id="menu">
+            <div style="background-color: silver;float:left;width:400px;clear:both;">
+                <div style="display:block;float:right;"> 
+                    Cena:
+                    <input style="width:50px;height:15px;margin-bottom: 2px;" type="text"><br/>
+                    <input onclick="add(this)" type="button" value="dodaj"/>
+                    <input onclick="del(this)" type="button" value="usuń"/>
+
+                </div>
+                <input class="noborder" placeholder="tytuł"  style="display:block;height:15px;margin-bottom: 2px;font-size:15px;" type="text">
+                <input class="noborder" placeholder="opis" style="display:block;height:15px;font-size:10px;" type="text">
+
+
+
+            </div>
+            <div style="margin-left:20px;clear:both;float:left;width:400px;"> 
+
+            </div>
+        </div>
+    </body>
+</html>

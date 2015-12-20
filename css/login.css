@@ -1,0 +1,9 @@
+.frame {margin-left:auto;margin-right: auto;margin-top: 260px;background-color: #3B3B3B;width: 280px;}
+.frame {border-radius: 20px;padding:20px;}
+img {margin-left: auto; margin-right: auto;display: block;} 
+input {display:block; margin-left: auto; margin-right: auto;width:200px;margin-top:20px;border:none;border-radius: 5px;}
+input[type="submit"] {background: radial-gradient(#e7a200,#c77b10);}
+a{text-decoration: none;color: black;}
+span{display:block; margin-left: auto; margin-right: auto;color:white;text-align: center; background:red;border:black 1px solid}
+.error{background-color: red;}
+.note{background-color: green;}

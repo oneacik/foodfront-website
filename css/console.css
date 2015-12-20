@@ -1,0 +1,25 @@
+
+body html {margin:0;padding:0;}
+.frame{width:1200px;margin:auto;margin-bottom: 20px;margin-top:20px;}
+.top_banner {height: 60px;background: radial-gradient(#96d4d3,#b9d2d2);border-radius: 20px;margin-bottom:20px;}
+.navigation {padding-top: 20px;float:left;width:200px;min-height: 200px;border-radius: 20px;
+            background: radial-gradient(#96d4d3,#b9d2d2);margin-right: 40px;}
+.content {float:left;width:920px;min-height: 700px;border-radius: 20px;background-color: red;
+         background: radial-gradient(#96d4d3,#b9d2d2);}                          
+.navigation a{text-decoration: none !important;display:block;width:180px;margin-left: 10px;margin-top: 10px;
+             text-align: center;background: radial-gradient(#e7a200,#c77b10);border-radius: 3px;height:20px;}
+.navigation a span{color: black;}
+
+
+
+.content{padding:20px}
+.element{float:left;clear:both;margin-bottom: 10px;width:880px;}
+.module{width:100%;}
+.icon{width: 64px;height:64px;background-color: #c2d6d6;float:left}
+.texts{float:left;margin-left: 20px;}
+.texts :first-child {font-weight: bolder;font-size: 30px;}
+.texts :last-child {float:left;}
+.button{background: radial-gradient(#e7a200,#c77b10); height:30px;border-radius: 10px;padding-left: 10px;padding-right: 10px;}
+.bar {margin-bottom: 20px;}
+
+hr{clear:both;}
