@@ -9,7 +9,7 @@ session_start();
 switch($_GET["main"]){
     
     case "console":{
-        Console::process(SSmarty::returnSmarty());
+        Console::process();
         break;
     }
     
