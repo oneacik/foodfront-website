@@ -6,6 +6,7 @@ RewriteBase /
 RewriteRule ^landingpage/(.{0,})$ landingpage/$1 [L]
 RewriteRule ^logout/$ logout.php
 RewriteRule ^kurwa$ index.php
+RewriteRule ^android$ android.php
 RewriteRule ^$ index.html
 RewriteRule ^img/([a-zA-Z0-9]*)$ img/$1
 RewriteRule ^([0-9]*)$ images/$1

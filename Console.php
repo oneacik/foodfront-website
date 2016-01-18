@@ -14,7 +14,8 @@ class Console {
      * 
      * @param Smarty $smarty
      */
-    static function process($smarty) {
+    static function process() {
+        $smarty=SSmarty::returnSmarty();
         $content = array();
         if (isset($_GET["sub"])) {
             $smarty->assign("sub", $_GET["sub"]); //lawl XDD XSS KURWO
