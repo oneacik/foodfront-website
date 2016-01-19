@@ -16,7 +16,7 @@ class Database {
 
         if (self::$conn === null) {
             try {
-                self::$conn = new PDO('mysql:host=mysql.staszic.waw.pl;dbname=oneat;charset=utf8', 'oneat', 'pusia1');
+                self::$conn = new PDO('mysql:host=localhost;dbname=oneat;charset=utf8', 'root', 'likrysz1');
             } catch (PDOException $ex) {
                 echo $ex;
             }
@@ -48,8 +48,8 @@ class Database {
                     . "id INT auto_increment,"
                     . "user INT,"
                     . "menu INT DEFAULT 0,"
-                    . "title VARCHAR(64) DEFAULT \"Tytuł Domyślny\","
-                    . "address VARCHAR(128) DEFAULT \"Adres Domyślny, Warszawa\","
+                    . "title VARCHAR(64) DEFAULT 'Tytuł Domyślny',"
+                    . "address VARCHAR(128) DEFAULT \'Adres Domyślny, Warszawa\',"
                     . "lat DOUBLE DEFAULT 52.2296756,"
                     . "lng DOUBLE DEFAULT 21.0122287,"
                     . "creation_date TIMESTAMP DEFAULT '0000-00-00 00:00:00',"
