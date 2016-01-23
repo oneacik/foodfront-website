@@ -1,8 +1,8 @@
 <?php
 
 require_once ('Connections.php');
-require_once ('User.php');
-require_once ('Spot.php');
+require_once ('models/User.php');
+require_once ('models/Spot.php');
 
 (new Database())->reinstall();
 $_POST["login"]="test";
