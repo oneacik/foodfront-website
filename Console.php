@@ -130,6 +130,7 @@ class Console {
         if (isset($_POST["new"])) {
             switch ($_GET["sub"]) {
                 case "spots":
+                    echo "kurwa";
                     Spot::createSpot();
                     break;
                 case "menus":
