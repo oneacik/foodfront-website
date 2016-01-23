@@ -1,7 +1,7 @@
 <?php
 
 require_once("Utils.php");
-require_once("Spot.php");
+require_once("models/Spot.php");
 #modules
 require_once("./modules/ModuleIcon.php");
 require_once("./modules/ModuleTitle.php");
