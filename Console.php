@@ -3,9 +3,9 @@
 require_once("Utils.php");
 require_once("Spot.php");
 #modules
-require_once("./ModuleIcon.php");
-require_once("./ModuleTitle.php");
-require_once("./ModuleMap.php");
+require_once("./modules/ModuleIcon.php");
+require_once("./modules/ModuleTitle.php");
+require_once("./modules/ModuleMap.php");
 
 
 class Console {
