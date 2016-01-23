@@ -1,6 +1,6 @@
 <?php
 require_once './Connections.php';
-require_once './User.php';
+require_once './models/User.php';
 class Spot{
 
     var $id;

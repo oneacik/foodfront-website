@@ -1,7 +1,7 @@
 <?php
 require_once ("./smarty.php");
-require_once ("./Spot.php");
-require_once ("./User.php");
+require_once ("./models/Spot.php");
+require_once ("./models/User.php");
 require_once ("modules/Module.php");
 require_once ("./Files.php");
 
