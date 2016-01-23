@@ -49,7 +49,7 @@ class Database {
                     . "user INT,"
                     . "menu INT DEFAULT 0,"
                     . "title VARCHAR(64) DEFAULT 'Tytuł Domyślny',"
-                    . "address VARCHAR(128) DEFAULT \'Adres Domyślny, Warszawa\',"
+                    . "address VARCHAR(128) DEFAULT 'Adres Domyślny, Warszawa',"
                     . "lat DOUBLE DEFAULT 52.2296756,"
                     . "lng DOUBLE DEFAULT 21.0122287,"
                     . "creation_date TIMESTAMP DEFAULT '0000-00-00 00:00:00',"
