@@ -6,12 +6,13 @@ require_once("Spot.php");
 require_once("./ModuleIcon.php");
 require_once("./ModuleTitle.php");
 require_once("./ModuleMap.php");
+require_once("./ModuleBanner.php");
 
 
 class Console {
 
     /**
-     * 
+     *
      * @param Smarty $smarty
      */
     static function process() {
@@ -46,29 +47,30 @@ class Console {
         $smarty->display("console.tpl");
     }
 
-    
-    
-    
-    
-    
+
+
+
+
+
     static function processSpots(){
         $spot=  Spot::getSpotById($_GET["id"]);
         $items = array(
             new ModuleIcon($spot),
             new ModuleTitle($spot),
-            new ModuleMap($spot));
-        
+            new ModuleMap($spot),
+            new ModuleBanner($spot));
+
         $content=self::listall($items);
-        
-        
+
+
         return $content;
     }
-    
-    
-    
-    
+
+
+
+
     /**
-     * 
+     *
      * @param  $items
      */
     static function listall($items){
@@ -77,15 +79,15 @@ class Console {
             /* @var $item Module */
             $item->process();
             $content[]=$item->display();
-            
+
         }
-        
+
         return $content;
     }
-    
-    
+
+
     /**
-     * 
+     *
      * @param Smarty $smarty
      */
     static function listit($smarty) {
@@ -109,7 +111,7 @@ class Console {
         return $ret;
     }
 
-    
+
     static function delete(){
         if (isset($_POST["delete"])&&isset($_POST["id"])) {
             switch ($_GET["sub"]) {
@@ -121,10 +123,10 @@ class Console {
                     break;
             }
         }
-        
+
     }
-    
-    
+
+
     static function update() {
 
         if (isset($_POST["new"])) {
