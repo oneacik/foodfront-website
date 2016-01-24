@@ -14,9 +14,6 @@ class Spot{
     var $hi_icon;
     var $address;
 
-
-
-
     static function createSpot(){
         if(User::getUID()==NULL){
             return NULL;
