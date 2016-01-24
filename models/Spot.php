@@ -10,12 +10,13 @@ class Spot{
     var $creation_date;
     var $update_date;
     var $map_icon;
+    var $map_banner;
     var $hi_icon;
     var $address;
-    
-    
-    
-    
+
+
+
+
     static function createSpot(){
         if(User::getUID()==NULL){
             return NULL;
@@ -24,73 +25,79 @@ class Spot{
         $stmt=$conn->prepare("INSERT INTO spots (user,creation_date) VALUES (?,NOW())");
         if(  !$stmt->execute(array(User::getUID()))    ){
             return NULL;
-            
+
         }
-        
+
         return $conn->lastInsertId();
-        
+
     }
-    
+
     static function deleteSpot(){
         if(($uid=User::getUID())==NULL){
             throw new Exception("Użytkownik jest niezalogowany");
         }
-        
+
         $conn=(new Database())->getConnection();
         $stmt=$conn->prepare("DELETE FROM spots WHERE user=? && id=?");
         $stmt->execute(array($uid,$_POST["id"]));
-        
-        
+
+
     }
-    
+
     static function getSpotsByUser(){
         if(($uid=User::getUID())==NULL){
             throw new Exception("Użytkownik jest niezalogowany");
         }
         $conn=(new Database())->getConnection();
-        $stmt=$conn->prepare("SELECT id,title,address,user,menu,lat,lng,creation_date,update_date,map_icon,hi_icon FROM spots WHERE user=?");
+        $stmt=$conn->prepare("SELECT id,title,address,user,menu,lat,lng,creation_date,update_date,map_icon,map_banner,hi_icon FROM spots WHERE user=?");
         $stmt->execute(array($uid));
         $spots=$stmt->fetchAll(PDO::FETCH_CLASS,"Spot");
         return $spots;
     }
-    
+
     /**
-     * 
+     *
      * @param integer $id
      * @return Spot
      */
-    
+
     static function getSpotById($id){
 
         $conn=(new Database())->getConnection();
         $stmt=$conn->prepare("SELECT id,title,address,user,menu,lat,lng,creation_date,update_date,map_icon,hi_icon FROM spots WHERE id=?");
         $stmt->execute(array($id));
-        
+
         /**
          * @var Spot
          */
         $spot=$stmt->fetchObject("Spot");
         if($spot==FALSE||($spot->user!=User::getUID())){
             return NULL;
-            
+
         }
         return $spot;
     }
-    
+
     function updateTitle($title){
         $conn=(new Database())->getConnection();
         $stmt=$conn->prepare("UPDATE spots SET title=? WHERE id=?");
         $stmt->execute(array($title,$this->id));
         $this->title=$title;
     }
-    
+
     function updateMapIcon($img){
         $conn=(new Database())->getConnection();
         $stmt=$conn->prepare("UPDATE spots SET map_icon=? WHERE id=?");
         $stmt->execute(array($img,$this->id));
         $this->map_icon=$img;
     }
-    
+    function updateBanner($banner){
+        $conn=(new Database())->getConnection();
+        $stmt=$conn->prepare("UPDATE spots SET map_banner=? WHERE id=?");
+        $stmt->execute(array($banner,$this->id));
+        $this->map_banner=$banner;
+    }
+
     function updateLocation($lat,$lng,$address){
         $conn=(new Database())->getConnection();
         $stmt=$conn->prepare("UPDATE spots SET lat=?,lng=?,address=?  WHERE id=?");
@@ -98,8 +105,8 @@ class Spot{
         $this->lat=$lat;
         $this->lng=$lng;
         $this->address=$address;
-        
+
     }
-    
-    
+
+
 }
