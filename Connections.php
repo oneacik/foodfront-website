@@ -9,14 +9,14 @@ class Database {
     static private $conn = null;
 
     /**
-     * 
+     *
      * @return PDO
      */
     function getConnection() {
 
         if (self::$conn === null) {
             try {
-                self::$conn = new PDO('mysql:host=localhost;dbname=oneat;charset=utf8', 'root', 'likrysz1');
+                self::$conn = new PDO('mysql:host=localhost;dbname=oneat;charset=utf8', 'root', '');
             } catch (PDOException $ex) {
                 echo $ex;
             }
@@ -43,7 +43,7 @@ class Database {
                     . "email VARCHAR(128),"
                     . "creation_date TIMESTAMP DEFAULT NOW(),"
                     . "primary key (id))");
-            
+
             $conn->exec("CREATE TABLE spots ("
                     . "id INT auto_increment,"
                     . "user INT,"
@@ -55,35 +55,34 @@ class Database {
                     . "creation_date TIMESTAMP DEFAULT '0000-00-00 00:00:00',"
                     . "update_date TIMESTAMP DEFAULT NOW(),"
                     . "map_icon INT DEFAULT 0,"
-                    . "hi_icon INT DEFAULT 0," 
+                    . "map_banner INT DEFAULT 0,"
+                    . "hi_icon INT DEFAULT 0,"
                     . "primary key (id))");
-            
+
             $conn->exec("CREATE TABLE menus ("
                     . "id INT auto_increment,"
                     . "user INT,"
                     . "title VARCHAR(64),"
                     . "content TEXT,"
                     . "primary key (id))");
-            
+
             $conn->exec("CREATE TABLE subscriptions ("
                     . "id INT auto_increment,"
                     . "content Varchar(64),"
                     . "price Double,"
                     . "discount INT,"
                     . "primary key (id))");
-            
-            
+
+
             $conn->exec("CREATE TABLE images ("
                     . "id INT auto_increment,"
                     . "primary key (id))");
-            
-            
-        
+
+
+
         } catch (PDOException $ex) {
             echo $ex;
         }
     }
 
 }
-
-
