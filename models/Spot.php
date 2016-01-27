@@ -49,7 +49,7 @@ class Spot{
             throw new Exception("Użytkownik jest niezalogowany");
         }
         $conn=(new Database())->getConnection();
-        $stmt=$conn->prepare("SELECT id,title,address,user,menu,lat,lng,creation_date,update_date,map_icon,map_banner,hi_icon FROM spots WHERE user=?");
+        $stmt=$conn->prepare("SELECT * FROM spots WHERE user=?");
         $stmt->execute(array($uid));
         $spots=$stmt->fetchAll(PDO::FETCH_CLASS,"Spot");
         return $spots;
@@ -64,7 +64,7 @@ class Spot{
     static function getSpotById($id){
 
         $conn=(new Database())->getConnection();
-        $stmt=$conn->prepare("SELECT id,title,address,user,menu,lat,lng,creation_date,update_date,map_icon,hi_icon FROM spots WHERE id=?");
+        $stmt=$conn->prepare("SELECT * FROM spots WHERE id=?");
         $stmt->execute(array($id));
 
         /**

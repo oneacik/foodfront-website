@@ -16,7 +16,7 @@ class Database {
 
         if (self::$conn === null) {
             try {
-                self::$conn = new PDO('mysql:host=localhost;dbname=oneat;charset=utf8', 'root', '');
+                self::$conn = new PDO('mysql:host=localhost;dbname=oneat;charset=utf8', 'root', 'likrysz1');
             } catch (PDOException $ex) {
                 echo $ex;
             }

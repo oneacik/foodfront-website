@@ -11,7 +11,7 @@ class Menu{
             throw new Exception("Użytkownik jest niezalogowany");
         }
         $conn=(new Database())->getConnection();
-        $stmt=$conn->prepare("SELECT id,title,user,content FROM spots WHERE user=?");
+        $stmt=$conn->prepare("SELECT * WHERE user=?");
         $stmt->execute(array($uid));
         $menus=$stmt->fetchAll(PDO::FETCH_CLASS,"Menu");
         return $menus;
@@ -20,7 +20,7 @@ class Menu{
     static function getMenuById($id){
 
         $conn=(new Database())->getConnection();
-        $stmt=$conn->prepare("SELECT id,title,user,content FROM spots WHERE id=?");
+        $stmt=$conn->prepare("SELECT * FROM spots WHERE id=?");
         $stmt->execute(array($id));
         
         /**

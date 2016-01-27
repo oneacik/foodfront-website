@@ -6,7 +6,7 @@ require_once("models/Spot.php");
 require_once("./modules/ModuleIcon.php");
 require_once("./modules/ModuleTitle.php");
 require_once("./modules/ModuleMap.php");
-
+require_once("./modules/ModuleBanner.php");
 
 class Console {
 
