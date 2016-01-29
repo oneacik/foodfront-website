@@ -16,7 +16,7 @@ class Database {
 
         if (self::$conn === null) {
             try {
-                self::$conn = new PDO('mysql:host=localhost;dbname=oneat;charset=utf8', 'root', '');
+                self::$conn = new PDO('mysql:host=localhost;dbname=oneat;charset=utf8', 'root', 'likrysz1');
             } catch (PDOException $ex) {
                 echo $ex;
             }
@@ -69,8 +69,10 @@ class Database {
             $conn->exec("CREATE TABLE subscriptions ("
                     . "id INT auto_increment,"
                     . "content Varchar(64),"
-                    . "price Double,"
-                    . "discount INT,"
+                    . "price DOUBLE,"
+                    . "discount_price DOUBLE,"
+                    . "quantity DOUBLE,"
+                    . "type INT,"
                     . "primary key (id))");
 
 
