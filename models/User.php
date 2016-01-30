@@ -50,21 +50,21 @@ class User {
         return isset($_SESSION["uid"]);
     }
     static function login() {
-        $stmt = (new Database())->getConnection()->prepare("SELECT id FROM users WHERE login=? && pass=?");
-        $stmt->execute(array($_POST["user"], $_POST["pass"]));
-        if (($temp = $stmt->fetch()) != false) {
+        _login($_POST["user"],$_POST["pass"]);
+        if(_login >= 0) {
             $_SESSION["uid"] = $temp["id"];
             return true;
+        }else {
+            return false;
         }
-        return false;
     }
     static function _login($username,$pass) {
         $stmt = (new Database())->getConnection()->prepare("SELECT id FROM users WHERE login=? && pass=?");
         $stmt->execute(array($username, $pass));
         if (($temp = $stmt->fetch()) != false) {
-            return true;
+            return $temp["id"];
         }
-        return false;
+        return -1;
     }
     static function getUID() {
         return (isset($_SESSION["uid"]) ? $_SESSION["uid"] : NULL);

@@ -41,6 +41,14 @@ class Spot{
 
     }
 
+    static function getSpots(){
+        $conn=(new Database())->getConnection();
+        $stmt=$conn->prepare("SELECT * FROM spots");
+        $stmt->execute();
+        $spots=$stmt->fetchAll(PDO::FETCH_CLASS,"Spot");
+        return $spots;
+    }
+
     static function getSpotsByUser(){
         if(($uid=User::getUID())==NULL){
             throw new Exception("Użytkownik jest niezalogowany");
@@ -58,19 +66,25 @@ class Spot{
      * @return Spot
      */
 
-    static function getSpotById($id){
+ static function getSpotById($id){
+        $spot = self::_getSpotById($id);
+        if($spot==FALSE||$spot->user!=User::getUID()){
+            return NULL;
+        }
+        return $spot;
+    }
 
+ static function _getSpotById($id){
         $conn=(new Database())->getConnection();
         $stmt=$conn->prepare("SELECT * FROM spots WHERE id=?");
         $stmt->execute(array($id));
-
         /**
          * @var Spot
          */
         $spot=$stmt->fetchObject("Spot");
-        if($spot==FALSE||($spot->user!=User::getUID())){
-            return NULL;
 
+        if($spot==FALSE){
+            return NULL;
         }
         return $spot;
     }
