@@ -50,9 +50,8 @@ class User {
         return isset($_SESSION["uid"]);
     }
     static function login() {
-        _login($_POST["user"],$_POST["pass"]);
-        if(_login >= 0) {
-            $_SESSION["uid"] = $temp["id"];
+        if($id=self::_login($_POST["user"],$_POST["pass"]) >= 0) {
+            $_SESSION["uid"] = $id;
             return true;
         }else {
             return false;
