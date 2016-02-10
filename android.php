@@ -33,13 +33,13 @@ class Android {
         $login = User::_login($username,$password);
 
         if($login >= 0) {
-            $arr = array('errno'=>'0','error'=> "");
+            $arr = array('errno'=>0,'error'=> "");
         }
         elseif($login == -1) {
-            $arr = array('errno'=>'-1','error'=> "Wrong credentials");
+            $arr = array('errno'=>-1,'error'=> "Wrong credentials");
         }
         else {
-            $arr = array('errno'=>'-2','error'=> "System error");
+            $arr = array('errno'=>-2,'error'=> "System error");
         }
 
         return $arr;
@@ -49,10 +49,10 @@ class Android {
 
         $spots = Spot::getSpots();
         if($spots){
-            $error = array('errno'=>'0','error'=>'');
+            $error = array('errno'=>0,'error'=>'');
             $arr = array('places'=>$spots,'error'=>$error);
         } else {
-            $error = array('errno'=>'-1','error'=>'System error');
+            $error = array('errno'=>-1,'error'=>'System error');
             $arr = array('error'=>$error);
         }
         return $arr;
@@ -61,9 +61,9 @@ class Android {
     static function getSpot($id) {
         $spot = Spot::_getSpotById($id);
         if($spot){
-            $arr = array('places'=>$spot,'errno'=>'0','error'=>'');
+            $arr = array('places'=>$spot,'errno'=>0,'error'=>'');
         } else {
-            $arr = array('errno'=>'-1','error'=>'System error');
+            $arr = array('errno'=>-1,'error'=>'System error');
         }
         return $arr;
     }
